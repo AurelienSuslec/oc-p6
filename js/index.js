@@ -15,6 +15,7 @@ function getRandomNumber(min, max) {
  */
 function cellHasElement(cellX, cellY, elements) {
     for (let i = 0; i < elements.length; i++) {
+
         if (elements[i].x === cellX && elements[i].y === cellY) {
             return elements[i];
         }
@@ -119,7 +120,7 @@ function playerMove(players, obstacles, totalRows, totalCols) {
     for (let y = playerActive.y - 1; y >= playerActive.y - 3; y--) {
         const cell = {x: playerActive.x, y}
         //Tester si la cellule a un obstacle et qu'aucun obstacle n'a été trouvé sur le chemin
-        if (cellHasElement(cell.x, cell.y, obstacles) === null && obstacleFound === false) {
+        if (cellHasElement(cell.x, cell.y, obstacles) === null && cellHasElement(cell.x, cell.y, players) === null  && obstacleFound === false) {
             moveCoordinates.push(cell)
         } else {
             obstacleFound = true;
@@ -131,7 +132,7 @@ function playerMove(players, obstacles, totalRows, totalCols) {
     for (let y = playerActive.y + 1; y <= playerActive.y + 3; y++) {
         const cell = {x: playerActive.x, y}
         //Tester si la cellule a un obstacle et qu'aucun obstacle n'a été trouvé sur le chemin
-        if (cellHasElement(cell.x, cell.y, obstacles) === null && obstacleFound === false) {
+        if (cellHasElement(cell.x, cell.y, obstacles) === null && cellHasElement(cell.x, cell.y, players) === null && obstacleFound === false) {
             moveCoordinates.push(cell)
         } else {
             obstacleFound = true;
@@ -143,7 +144,7 @@ function playerMove(players, obstacles, totalRows, totalCols) {
     for (let x = playerActive.x - 1; x >= playerActive.x - 3; x--) {
         const cell = {x, y: playerActive.y}
         //Tester si la cellule a un obstacle et qu'aucun obstacle n'a été trouvé sur le chemin
-        if (cellHasElement(cell.x, cell.y, obstacles) === null && obstacleFound === false) {
+        if (cellHasElement(cell.x, cell.y, obstacles) === null && cellHasElement(cell.x, cell.y, players) === null && obstacleFound === false) {
             moveCoordinates.push(cell)
         } else {
             obstacleFound = true;
@@ -155,7 +156,7 @@ function playerMove(players, obstacles, totalRows, totalCols) {
     for (let x = playerActive.x + 1; x <= playerActive.x + 3; x++) {
         const cell = {x, y: playerActive.y}
         //Tester si la cellule a un obstacle et qu'aucun obstacle n'a été trouvé sur le chemin
-        if (cellHasElement(cell.x, cell.y, obstacles) === null && obstacleFound === false) {
+        if (cellHasElement(cell.x, cell.y, obstacles) === null && cellHasElement(cell.x, cell.y, players) === null && obstacleFound === false) {
             moveCoordinates.push(cell)
         } else {
             obstacleFound = true;
